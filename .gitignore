@@ -1,0 +1,13 @@
+._.*
+._.DS_Store
+.DS_Store
+.osiris_pid
+.shutdown_pid
+_custom
+Thumbs.db
+*.mp4
+/bin/env.conf
+/fileserver
+/client
+/web/resources/downloads/modules/custom/*
+!/web/resources/downloads/modules/custom/*.jar
