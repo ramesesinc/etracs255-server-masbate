@@ -9,6 +9,20 @@ UPGRADE PROCEDURE 254 to 255
     2.2.    Create "etracs255_masbate" database 
     2.3.    Restore "etracs254_masbate" backup to "etracs255_masbate" database 
 
+    2.4.    Launch Navicat and select "etracs255_masbate" database
+
+    2.5.    Execute migration scripts in "_res/patches" folder 
+            in the sequence below:
+
+            - 01-upgrade.sql
+            - 02-patch-etracs.sql
+            - 03-ctc-upgrade.sql
+            - 04-patch-etracs-rptis.sql
+
+    2.6.    Select "etracs254_masbate_image" and execute the patch script:
+
+            - 04-patch-rptis-image.sql
+
 3. Clone etracs255-server-masbate deployment
 
     3.1.    Open Windows Explorer
