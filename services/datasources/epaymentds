@@ -1,5 +1,5 @@
 dialect=mysql
 driverClass=com.mysql.jdbc.Driver
-url=jdbc:mysql://${db_server_host}/eor_masbate
-user=${db_server_user}
-pwd=${db_server_pass}
+url=jdbc:mysql://${dbserver_host}/${db_eor}
+user=${dbserver_user}
+pwd=${dbserver_pass}
