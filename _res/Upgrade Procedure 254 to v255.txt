@@ -1,0 +1,37 @@
+UPGRADE PROCEDURE 254 to 255
+====================================
+
+1. Install Git SCM 
+
+2. Create "etracs255_masbate" database
+
+    2.1.    Backup "etracs254_masbate" database 
+    2.2.    Create "etracs255_masbate" database 
+    2.3.    Restore "etracs254_masbate" backup to "etracs255_masbate" database 
+
+3. Clone etracs255-server-masbate deployment
+
+    3.1.    Open Windows Explorer
+    3.2.    Browse to c:\ and create SERVERS folder
+    3.3.    Right-click SERVERS folder and select "Git Bash Here"
+    3.4.    Enter the command below
+
+            $ git clone https://github.com/ramesesinc/etracs255-server-masbate.git
+
+4. Configure "etracs255-server-masbate"
+
+    4.1.    Open Windows Explorer and browse 
+            to SERVER_DIR => "c:\SERVERS\etracs255-server-masbate" 
+    4.2.    Unzip "custom-template.zip"
+    4.3.    Edit "bin/env.conf" file. Set the following and save:
+
+                app_server_ip   - the etracs application server ip address
+                dbserver_host   - change db server host in case the database is in another host
+
+5. Start ETRACS Application Server 
+
+    5.1.    Open SERVER_DIR/bin folder 
+    5.2.    Double-click "run.bat" to start server 
+
+
+
