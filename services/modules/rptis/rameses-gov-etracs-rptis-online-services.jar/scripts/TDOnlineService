@@ -30,6 +30,9 @@ class TDOnlineService {
 	@ActiveDB('rptis_online_taxdec')
 	def em_online_taxdec
 
+	@Service('DateService')
+	def dtSvc;
+
 	@ProxyMethod
 	public def verifyTaxDec(params) {
 		params.tdno = params.refno 
@@ -93,19 +96,32 @@ class TDOnlineService {
 	}
 
 	def getBill(rptledger) {
+		def pdate = dtSvc.parseCurrentDate();
+
 		def bill = [
 			lastyearpaid: rptledger.lastyearpaid, 
 	        lastqtrpaid: rptledger.lastqtrpaid,
 	        period: '',
 			amtdue: 0.0,
+			ispaid: true,
 		]
+
+		if (
+			rptledger.lastyearpaid > pdate.year || 
+			(rptledger.lastyearpaid == pdate.year && rptledger.lastqtrpaid >= pdate.qtr)
+		) {
+			return bill
+		}
+		
 
 		try {
 			def b = billSvc.generateBillByTdNo(rptledger)
 			bill.amtdue = b.totals.total 
 			bill.period = buildPeriodCovered(b.ledgers[0])
+			bill.ispaid = false
 		} catch(e) {
 			println '[ERROR] ' + e.message
+			bill.ispaid = true
 		}
 		return bill
 	}
