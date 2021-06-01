@@ -109,6 +109,6 @@ rpt.app.context=etracs25
   <module version="2.50" file="ctc/rameses-gov-etracs-ctc.jar" />
 
   <!-- ovs -->
-  <module version="2.50" file="v254-ovs/rameses-gov-ovs.jar" />
+  <module version="2.49" file="v254-ovs/rameses-gov-ovs.jar" />
 </modules>
 </app>
